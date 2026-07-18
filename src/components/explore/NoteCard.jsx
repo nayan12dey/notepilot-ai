@@ -1,22 +1,16 @@
 "use client";
 
 import React from "react";
-import { Clock, Calendar, ArrowUpRight, Eye } from "lucide-react";
+import Image from "next/image"; // Next.js Image Component ইমপোর্ট
+import { Clock, Calendar, ArrowUpRight } from "lucide-react";
 
 /**
- * Premium Reusable NoteCard Component for NotePilot AI
- * @param {string} title - নোটের টাইটেল
- * @param {string} description - নোটের শর্ট ডেসক্রিপশন (সর্বোচ্চ ৩ লাইন লকড)
- * @param {string} imageUrl - কাভার ইমেজের সোর্স URL
- * @param {string} category - ক্যাটাগরি টেক্সট (যেমন: AI, Blockchain, Web Dev)
- * @param {string} date - পাবলিশিং বা এডিট করার তারিখ
- * @param {string} readTime - পড়ার আনুমানিক সময় (যেমন: 5 min read)
- * @param {function} onViewDetails - ভিউ ডিটেইলস বাটনের ক্লিক হ্যান্ডলার ফাংশন
+ * Premium Reusable NoteCard Component using Next.js Image Optimization
  */
 export default function NoteCard({
     title,
     description,
-    imageUrl = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop", // প্রিমিয়াম ডামি কাভার ইমেজ
+    imageUrl = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
     category = "Development",
     date = "Jul 18, 2026",
     readTime = "4 min read",
@@ -25,27 +19,29 @@ export default function NoteCard({
     return (
         <article className="group relative flex flex-col h-full w-full bg-white border-2 border-slate-100 rounded-[32px] overflow-hidden hover:border-blue-600 hover:shadow-[0_24px_50px_-12px_rgba(59,130,246,0.12)] transition-all duration-500 ease-out">
 
-            {/* ১. ইমেজ কন্টেইনার উইথ প্রিমিয়াম হোভার জুম */}
+            {/* ১. ইমেজ কন্টেইনার উইথ Next.js Image (Responsive Fill Pattern) */}
             <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100 shrink-0">
-                <img
+                <Image
                     src={imageUrl}
                     alt={title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    fill
+                    sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 25vw"
+                    priority={false}
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
 
                 {/* ক্যাটাগরি ব্যাজ (ফ্লোটিং) */}
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 z-10">
                     <span className="inline-flex items-center px-3.5 py-1.5 rounded-xl text-xs font-extrabold tracking-wide uppercase bg-white/95 backdrop-blur-md text-slate-800 border border-slate-200/50 shadow-sm select-none">
                         {category}
                     </span>
                 </div>
             </div>
 
-            {/* ২. কার্ড বডি কন্টেন্ট (flex-1 এবং flex-col নিশ্চিত করে সব কার্ডের হাইট সেম রাখবে) */}
-            <div className="flex flex-col flex-1 p-6 md:p-7">
+            {/* ২. কার্ড বডি কন্টেন্ট */}
+            <div className="flex flex-col flex-1 p-6 md:p-7 z-10 bg-white">
 
-                {/* মেটা ইনফো (ডেট ও রিড টাইম) */}
+                {/* মেটা ইনফো */}
                 <div className="flex items-center gap-4 text-xs font-bold text-slate-400 mb-3 select-none">
                     <span className="flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5 text-slate-300" />
