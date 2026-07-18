@@ -9,7 +9,7 @@ import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isLoggedIn=true, user, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/50 dark:border-zinc-800/40 bg-white/70 dark:bg-black/70 backdrop-blur-md transition-all duration-300">
