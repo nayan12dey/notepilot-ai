@@ -1,5 +1,6 @@
 "use client";
 
+import Features from "@/components/home/Features";
 import Hero from "@/components/home/Hero";
 import { useAuth } from "@/context/AuthContext";
 import { Sparkles, UserCheck, ShieldCheck, Cpu } from "lucide-react";
@@ -81,6 +82,7 @@ export default function Home() {
 
     <div>
       <Hero></Hero>
+      <Features></Features>
     </div>
   );
 }
