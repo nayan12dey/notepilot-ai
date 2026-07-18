@@ -1,65 +1,85 @@
-import Image from "next/image";
+"use client";
+
+import { useAuth } from "@/context/AuthContext";
+import { Sparkles, UserCheck, ShieldCheck, Cpu } from "lucide-react";
 
 export default function Home() {
+  const { isLoggedIn, user, login, logout } = useAuth();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    // <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-24 px-6">
+    //   {/* Background gradients */}
+    //   <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+    //   <div className="absolute bottom-1/4 left-1/3 -translate-x-1/2 w-[600px] h-[600px] bg-violet-500/10 dark:bg-violet-500/5 rounded-full blur-3xl pointer-events-none" />
+
+    //   <div className="max-w-3xl w-full text-center relative z-10">
+    //     {/* Badge */}
+    //     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200/50 dark:border-indigo-800/30 text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-8">
+    //       <Sparkles className="w-3.5 h-3.5" />
+    //       <span>Next.js App Router + HeroUI v3 Demo</span>
+    //     </div>
+
+    //     {/* Heading */}
+    //     <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-950 dark:text-white leading-[1.15] mb-6">
+    //       Welcome to{" "}
+    //       <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-cyan-500">
+    //         NotePilot AI
+    //       </span>
+    //     </h1>
+
+    //     {/* Subtitle */}
+    //     <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+    //       Experience a beautiful, fully responsive navigation bar styled with glassmorphism, responsive dropdown menus, active route highlighting, and smooth transitions.
+    //     </p>
+
+    //     {/* Simulation Dashboard */}
+    //     <div className="max-w-md mx-auto p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-950/40 backdrop-blur-md shadow-xl mb-12">
+    //       <h2 className="text-md font-bold text-zinc-800 dark:text-zinc-200 mb-4 flex items-center justify-center gap-2">
+    //         <Cpu className="w-4.5 h-4.5 text-indigo-500" />
+    //         <span>Interactive Navbar Tester</span>
+    //       </h2>
+    //       <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-6">
+    //         Click the buttons below to switch authentication states and observe the Navbar update in real-time.
+    //       </p>
+
+    //       <div className="flex flex-col sm:flex-row gap-3 items-center justify-center">
+    //         {isLoggedIn ? (
+    //           <button
+    //             onClick={logout}
+    //             className="w-full sm:w-auto px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-red-600 hover:bg-red-500 shadow-md shadow-red-500/10 hover:shadow-red-500/20 transition-all duration-300 cursor-pointer"
+    //           >
+    //             Simulate Log Out
+    //           </button>
+    //         ) : (
+    //           <button
+    //             onClick={login}
+    //             className="w-full sm:w-auto px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-500/10 hover:shadow-indigo-500/20 transition-all duration-300 cursor-pointer"
+    //           >
+    //             Simulate Log In
+    //           </button>
+    //         )}
+    //       </div>
+
+    //       <div className="mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs">
+    //         <span className="text-zinc-400">Current Status:</span>
+    //         {isLoggedIn ? (
+    //           <span className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400">
+    //             <UserCheck className="w-3.5 h-3.5" />
+    //             <span>Logged In as {user?.name}</span>
+    //           </span>
+    //         ) : (
+    //           <span className="inline-flex items-center gap-1 font-bold text-zinc-500">
+    //             <ShieldCheck className="w-3.5 h-3.5" />
+    //             <span>Logged Out</span>
+    //           </span>
+    //         )}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div>
+      
     </div>
   );
 }
