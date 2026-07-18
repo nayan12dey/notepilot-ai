@@ -1,6 +1,7 @@
 "use client";
 
 import AIFeatures from "@/components/home/AIFeatures";
+import FAQ from "@/components/home/FAQ";
 import Features from "@/components/home/Features";
 import Hero from "@/components/home/Hero";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -91,6 +92,7 @@ export default function Home() {
       <AIFeatures></AIFeatures>
       <Statistics></Statistics>
       <Testimonials></Testimonials>
+      <FAQ></FAQ>
     </div>
   );
 }
