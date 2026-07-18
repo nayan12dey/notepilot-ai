@@ -5,6 +5,7 @@ import Features from "@/components/home/Features";
 import Hero from "@/components/home/Hero";
 import HowItWorks from "@/components/home/HowItWorks";
 import Statistics from "@/components/home/Statistics";
+import Testimonials from "@/components/home/Testimonials";
 import { useAuth } from "@/context/AuthContext";
 import { Sparkles, UserCheck, ShieldCheck, Cpu } from "lucide-react";
 
@@ -89,6 +90,7 @@ export default function Home() {
       <HowItWorks></HowItWorks>
       <AIFeatures></AIFeatures>
       <Statistics></Statistics>
+      <Testimonials></Testimonials>
     </div>
   );
 }
