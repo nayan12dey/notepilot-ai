@@ -2,20 +2,28 @@
 
 import { useState } from "react";
 import Logo from "./Logo";
-import { useSession, signOut } from "@/lib/auth-client";
+import { signOut, useSession } from "@/lib/auth-client";
 import NavLinks from "./NavLinks";
 import UserMenu from "./UserMenu";
 import MobileMenu from "./MobileMenu";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: session, pending } = useSession();
 
+  
+
   const isLoggedIn = !!session?.user;
   const user = session?.user;
 
+  console.log(user)
+
+  const router = useRouter();
+
   const logout = async () => {
     await signOut();
+    router.push("/login");
   };
 
   return (
@@ -33,19 +41,25 @@ export default function Navbar() {
 
         {/* Right: Auth / User Menu & Mobile Trigger */}
         <div className="flex items-center gap-3">
-          <UserMenu
-            isLoggedIn={isLoggedIn}
-            user={user}
-            onLogout={logout}
-          />
+          {pending ? (
+            <div className="w-24 h-10 animate-pulse rounded-full bg-gray-200" />
+          ) : (
+            <>
+              <UserMenu
+                isLoggedIn={isLoggedIn}
+                user={user}
+                onLogout={logout}
+              />
 
-          <MobileMenu
-            isOpen={mobileMenuOpen}
-            setIsOpen={setMobileMenuOpen}
-            isLoggedIn={isLoggedIn}
-            user={user}
-            onLogout={logout}
-          />
+              <MobileMenu
+                isOpen={mobileMenuOpen}
+                setIsOpen={setMobileMenuOpen}
+                isLoggedIn={isLoggedIn}
+                user={user}
+                onLogout={logout}
+              />
+            </>
+          )}
         </div>
       </div>
     </header>

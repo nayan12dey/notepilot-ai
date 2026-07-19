@@ -38,7 +38,7 @@ export default function UserMenu({ isLoggedIn, user, onLogout }) {
   return (
     <div className="flex items-center gap-3">
       {/* Dashboard link (Desktop only) */}
-      <Button
+      {/* <Button
         as={Link}
         href="/dashboard"
         variant="ghost"
@@ -46,7 +46,7 @@ export default function UserMenu({ isLoggedIn, user, onLogout }) {
       >
         <LayoutDashboard className="w-4.5 h-4.5" />
         Dashboard
-      </Button>
+      </Button> */}
 
       {/* Avatar Dropdown using HeroUI v3 Named Components */}
       <Dropdown placement="bottom-end">
@@ -57,8 +57,7 @@ export default function UserMenu({ isLoggedIn, user, onLogout }) {
           >
             <Avatar
               isBordered={false}
-              className="w-8.5 h-8.5 transition-transform"
-              src={user?.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop"}
+              className="w-8.5 h-8.5 transition-transform" src="https://static.vecteezy.com/system/resources/previews/036/280/651/original/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"
               name={user?.name || "User"}
             />
           </button>
@@ -70,8 +69,8 @@ export default function UserMenu({ isLoggedIn, user, onLogout }) {
             <DropdownItem id="user-info" textValue={`Signed in as ${user?.email}`} className="px-3 py-2.5 rounded-xl border-b border-zinc-100 dark:border-zinc-800/60 mb-1 hover:bg-transparent pointer-events-none">
               <div className="flex flex-col gap-0.5">
                 <p className="text-[10px] font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">Signed in as</p>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 truncate">{user?.name || "Jane Doe"}</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{user?.email || "jane.doe@example.com"}</p>
+                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 truncate">{user?.name || "User"}</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{user?.email || "user@example.com"}</p>
               </div>
             </DropdownItem>
 
