@@ -1,12 +1,27 @@
 "use client";
 
+import { signIn } from "@/lib/auth-client";
 import React from "react";
+import toast from "react-hot-toast";
 
-export default function GoogleLoginButton({ onClick, isLoading }) {
+export default function GoogleLoginButton({ isLoading }) {
+
+    const handleGoogleLogin = async () => {
+        try {
+            await signIn.social({
+                provider: "google",
+                callbackURL: "/",
+            });
+
+        } catch (error) {
+            console.log(error);
+            toast.error("Google login failed");
+        }
+    };
     return (
         <button
             type="button"
-            onClick={onClick}
+            onClick={handleGoogleLogin}
             disabled={isLoading}
             className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-xl border border-slate-200 text-slate-700 font-bold text-sm bg-white hover:bg-slate-50 disabled:opacity-50 shadow-sm transition-all duration-300 cursor-pointer select-none active:scale-[0.99]"
         >

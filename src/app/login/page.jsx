@@ -108,9 +108,7 @@ export default function LoginForm() {
 
         {/* ─── GOOGLE THIRD PARTY SIGN IN ─── */}
         <GoogleLoginButton
-          onClick={() => toast.loading("Redirecting to Google...", { id: "google-auth", duration: 2000 })}
           isLoading={isLoading}
-          text="Continue with Google"
         />
 
         {/* OR Separator Component */}
