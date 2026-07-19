@@ -7,11 +7,10 @@ import Hero from "@/components/home/Hero";
 import HowItWorks from "@/components/home/HowItWorks";
 import Statistics from "@/components/home/Statistics";
 import Testimonials from "@/components/home/Testimonials";
-import { useAuth } from "@/context/AuthContext";
 import { Sparkles, UserCheck, ShieldCheck, Cpu } from "lucide-react";
 
 export default function Home() {
-  const { isLoggedIn, user, login, logout } = useAuth();
+  
 
   return (
     // <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-24 px-6">

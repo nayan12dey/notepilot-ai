@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import { LayoutDashboard, LogOut, User, LogIn, UserPlus } from "lucide-react";
+import Image from "next/image";
 
 export default function MobileMenu({ isOpen, setIsOpen, isLoggedIn, user, onLogout }) {
   // Prevent background scroll when mobile menu is open
@@ -29,38 +30,33 @@ export default function MobileMenu({ isOpen, setIsOpen, isLoggedIn, user, onLogo
       >
         <div className="relative w-5 h-4.5">
           <span
-            className={`absolute block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-in-out ${
-              isOpen ? "top-2.25 rotate-45" : "top-0.5"
-            }`}
+            className={`absolute block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-in-out ${isOpen ? "top-2.25 rotate-45" : "top-0.5"
+              }`}
           />
           <span
-            className={`absolute block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-in-out top-2.25 ${
-              isOpen ? "opacity-0 scale-x-0" : "opacity-100"
-            }`}
+            className={`absolute block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-in-out top-2.25 ${isOpen ? "opacity-0 scale-x-0" : "opacity-100"
+              }`}
           />
           <span
-            className={`absolute block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-in-out ${
-              isOpen ? "top-2.25 -rotate-45" : "top-4"
-            }`}
+            className={`absolute block h-0.5 w-full bg-current rounded-full transition-all duration-300 ease-in-out ${isOpen ? "top-2.25 -rotate-45" : "top-4"
+              }`}
           />
         </div>
       </button>
 
       {/* Backdrop (Darkened and Blur) */}
       <div
-        className={`fixed inset-0 top-[65px] bg-zinc-950/20 dark:bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 top-[65px] bg-zinc-950/20 dark:bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* Sliding Menu Panel */}
       <div
-        className={`fixed top-[65px] right-0 left-0 bottom-0 z-45 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg border-t border-zinc-100 dark:border-zinc-900 shadow-2xl flex flex-col px-6 py-8 md:hidden transition-all duration-300 ease-out origin-top ${
-          isOpen
-            ? "translate-y-0 opacity-100 scale-y-100"
-            : "-translate-y-4 opacity-0 scale-y-95 pointer-events-none"
-        }`}
+        className={`fixed top-[65px] right-0 left-0 bottom-0 z-45 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg border-t border-zinc-100 dark:border-zinc-900 shadow-2xl flex flex-col px-6 py-8 md:hidden transition-all duration-300 ease-out origin-top ${isOpen
+          ? "translate-y-0 opacity-100 scale-y-100"
+          : "-translate-y-4 opacity-0 scale-y-95 pointer-events-none"
+          }`}
       >
         {/* Navigation Links (Vertical List) */}
         <div className="flex flex-col gap-6">
@@ -101,10 +97,11 @@ export default function MobileMenu({ isOpen, setIsOpen, isLoggedIn, user, onLogo
             <div className="flex flex-col gap-4">
               {/* Signed-in User Info */}
               <div className="flex items-center gap-3 px-4 py-2 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-2xl border border-zinc-100 dark:border-zinc-900">
-                <img
-                  className="w-10 h-10 rounded-full object-cover border border-zinc-200 dark:border-zinc-800"
-                  src={user?.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop"}
-                  alt={user?.name || "User Avatar"}
+                <Image
+                  src={user?.image || "https://static.vecteezy.com/system/resources/previews/036/280/651/original/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-illustration-vector.jpg"}
+                  width={40}
+                  height={40}
+                  alt={user?.name}
                 />
                 <div className="flex flex-col min-w-0">
                   <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200 truncate">
@@ -135,9 +132,9 @@ export default function MobileMenu({ isOpen, setIsOpen, isLoggedIn, user, onLogo
                   <span>My Profile</span>
                 </Link>
                 <button
-                  onClick={() => {
+                  onClick={async () => {
                     setIsOpen(false);
-                    onLogout();
+                    await onLogout();
                   }}
                   className="flex items-center gap-3 px-5 py-3 text-sm font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/10 rounded-2xl border border-red-100/50 dark:border-red-950/20 transition-all duration-300 text-left cursor-pointer"
                 >

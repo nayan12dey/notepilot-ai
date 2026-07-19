@@ -5,11 +5,16 @@ import { useForm } from "react-hook-form";
 import { Mail, Lock, Eye, EyeOff, Loader2, LogIn, AlertCircle } from "lucide-react";
 import DemoLoginButton from "@/components/auth/DemoLoginButton";
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton";
+import toast from "react-hot-toast";
+import { signIn } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [globalError, setGlobalError] = useState("");
+
+  const router = useRouter()
 
   const {
     register,
@@ -24,27 +29,62 @@ export default function LoginForm() {
   });
 
   // Form Submit Handler
+  // const onSubmit = async (data) => {
+  //   setIsLoading(true);
+  //   setGlobalError("");
+
+  //   // Simulate API Network Latency Layer
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+
+  //     // লাইভ API-এর মতো এরর ও সাকসেস হ্যান্ডলিংয়ের উদাহরণ:
+  //     const hasError = false; // টেস্ট করার জন্য এটিকে true করতে পারেন
+
+  //     if (hasError) {
+  //       const errorMsg = "Invalid email or password. Please try again.";
+  //       setGlobalError(errorMsg);
+  //       toast.error(errorMsg);
+  //     } else {
+  //       toast.success("Welcome back! Signed in successfully.");
+  //     }
+  //   }, 2000);
+  // };
+
   const onSubmit = async (data) => {
     setIsLoading(true);
     setGlobalError("");
 
-    // Simulate API Network Latency Layer
-    setTimeout(() => {
+    try {
+      const { error } = await signIn.email({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (error) {
+        setGlobalError(error.message);
+        toast.error(error.message);
+        return;
+      }
+
+      toast.success("Welcome back!");
+      router.push("/");
+    } catch (err) {
+      setGlobalError("Something went wrong.");
+      toast.error("Something went wrong.");
+    } finally {
       setIsLoading(false);
-      // To simulate an error state, uncomment the line below:
-      // setGlobalError("Invalid email or password. Please try again.");
-      alert(`Form validated successfully!\nEmail: ${data.email}`);
-    }, 2000);
+    }
   };
 
   // Auto-fill Demo Credentials
   const handleAutoFillDemo = () => {
     setValue("email", "developer@notepilot.ai", { shouldValidate: true });
     setValue("password", "sandboxSecretPass123", { shouldValidate: true });
+    toast.success("Demo credentials loaded!");
   };
 
   return (
-    // ফুল-স্ক্রিন ব্যাকগ্রাউন্ড এবং উপর-নিচে নিখুঁত স্পেসিং (Padding Y) দেওয়ার জন্য বাইরের এই কন্টেইনারটি যুক্ত করা হয়েছে
+    // ফুল-স্ক্রিন ব্যাকগ্রাউন্ড এবং উপর-নিচে নিখুঁত স্পেসিং (Padding Y) দেওয়ার জন্য বাইরের এই কন্টেইনারটি যুক্ত করা হয়েছে
     <div className="min-h-screen w-full flex flex-col justify-center items-center bg-slate-50/50 px-4 py-12 md:py-20">
 
       {/* মূল লগইন কার্ড */}
@@ -68,7 +108,7 @@ export default function LoginForm() {
 
         {/* ─── GOOGLE THIRD PARTY SIGN IN ─── */}
         <GoogleLoginButton
-          onClick={() => alert("Redirecting to Google...")}
+          onClick={() => toast.loading("Redirecting to Google...", { id: "google-auth", duration: 2000 })}
           isLoading={isLoading}
           text="Continue with Google"
         />
@@ -97,8 +137,8 @@ export default function LoginForm() {
                 disabled={isLoading}
                 placeholder="Enter your email"
                 className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-slate-50/50 text-sm font-medium transition-colors focus:outline-none focus:bg-white ${errors.email
-                    ? "border-rose-400 focus:border-rose-500"
-                    : "border-slate-200 focus:border-blue-500"
+                  ? "border-rose-400 focus:border-rose-500"
+                  : "border-slate-200 focus:border-blue-500"
                   }`}
                 {...register("email", {
                   required: "Email is required",
@@ -133,8 +173,8 @@ export default function LoginForm() {
                 disabled={isLoading}
                 placeholder="Enter your password"
                 className={`w-full pl-10 pr-10 py-3 rounded-xl border bg-slate-50/50 text-sm font-medium transition-colors focus:outline-none focus:bg-white ${errors.password
-                    ? "border-rose-400 focus:border-rose-500"
-                    : "border-slate-200 focus:border-blue-500"
+                  ? "border-rose-400 focus:border-rose-500"
+                  : "border-slate-200 focus:border-blue-500"
                   }`}
                 {...register("password", {
                   required: "Password is required",

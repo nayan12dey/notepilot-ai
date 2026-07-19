@@ -1,15 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "@/context/AuthContext";
 import Logo from "./Logo";
+import { useSession, signOut } from "@/lib/auth-client";
 import NavLinks from "./NavLinks";
 import UserMenu from "./UserMenu";
 import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isLoggedIn, user, logout } = useAuth();
+  const { data: session, pending } = useSession();
+
+  const isLoggedIn = !!session?.user;
+  const user = session?.user;
+
+  const logout = async () => {
+    await signOut();
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/50 dark:border-zinc-800/40 bg-white/70 dark:bg-black/70 backdrop-blur-md transition-all duration-300">
@@ -26,18 +33,18 @@ export default function Navbar() {
 
         {/* Right: Auth / User Menu & Mobile Trigger */}
         <div className="flex items-center gap-3">
-          <UserMenu 
-            isLoggedIn={isLoggedIn} 
-            user={user} 
-            onLogout={logout} 
+          <UserMenu
+            isLoggedIn={isLoggedIn}
+            user={user}
+            onLogout={logout}
           />
-          
-          <MobileMenu 
-            isOpen={mobileMenuOpen} 
-            setIsOpen={setMobileMenuOpen} 
-            isLoggedIn={isLoggedIn} 
-            user={user} 
-            onLogout={logout} 
+
+          <MobileMenu
+            isOpen={mobileMenuOpen}
+            setIsOpen={setMobileMenuOpen}
+            isLoggedIn={isLoggedIn}
+            user={user}
+            onLogout={logout}
           />
         </div>
       </div>

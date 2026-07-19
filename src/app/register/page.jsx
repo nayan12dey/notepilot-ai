@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { User, Mail, Lock, Eye, EyeOff, Loader2, UserPlus, AlertCircle } from "lucide-react";
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { signUp } from "@/lib/auth-client";
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,17 +26,49 @@ export default function RegisterPage() {
   });
 
   // Form Submit Handler
+  // const onSubmit = async (data) => {
+  //   setIsLoading(true);
+  //   setGlobalError("");
+
+  //   // Simulate API Network Latency Layer
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+
+  //     // লাইভ API-এর মতো এরর ও সাকসেস হ্যান্ডলিংয়ের উদাহরণ:
+  //     const hasError = false; // টেস্ট করার জন্য এটিকে true করতে পারেন
+
+  //     if (hasError) {
+  //       const errorMsg = "An account with this email already exists.";
+  //       setGlobalError(errorMsg);
+  //       toast.error(errorMsg);
+  //     } else {
+  //       toast.success(`Welcome aboard, ${data.name}! Account created.`);
+  //     }
+  //   }, 2000);
+  // };
+
+  const router = useRouter();
+
   const onSubmit = async (data) => {
     setIsLoading(true);
     setGlobalError("");
 
-    // Simulate API Network Latency Layer
-    setTimeout(() => {
-      setIsLoading(false);
-      // To simulate an error state, uncomment the line below:
-      // setGlobalError("An account with this email already exists.");
-      alert(`Account created successfully!\nName: ${data.name}\nEmail: ${data.email}`);
-    }, 2000);
+    const { error } = await signUp.email({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    });
+
+    setIsLoading(false);
+
+    if (error) {
+      setGlobalError(error.message);
+      toast.error(error.message);
+      return;
+    }
+
+    toast.success("Account created successfully.");
+    router.push("/login");
   };
 
   return (
@@ -61,7 +96,7 @@ export default function RegisterPage() {
 
         {/* ─── GOOGLE THIRD PARTY SIGN IN ─── */}
         <GoogleLoginButton
-          onClick={() => alert("Redirecting to Google OAuth...")}
+          onClick={() => toast.loading("Redirecting to Google OAuth...", { id: "google-auth", duration: 2000 })}
           isLoading={isLoading}
           text="Continue with Google"
         />
