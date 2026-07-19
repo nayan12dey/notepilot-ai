@@ -2,11 +2,10 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Mail, Lock, Eye, EyeOff, Loader2, LogIn, AlertCircle } from "lucide-react";
-import DemoLoginButton from "@/components/auth/DemoLoginButton";
+import { User, Mail, Lock, Eye, EyeOff, Loader2, UserPlus, AlertCircle } from "lucide-react";
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton";
 
-export default function LoginForm() {
+export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [globalError, setGlobalError] = useState("");
@@ -14,10 +13,10 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -32,29 +31,23 @@ export default function LoginForm() {
     setTimeout(() => {
       setIsLoading(false);
       // To simulate an error state, uncomment the line below:
-      // setGlobalError("Invalid email or password. Please try again.");
-      alert(`Form validated successfully!\nEmail: ${data.email}`);
+      // setGlobalError("An account with this email already exists.");
+      alert(`Account created successfully!\nName: ${data.name}\nEmail: ${data.email}`);
     }, 2000);
   };
 
-  // Auto-fill Demo Credentials
-  const handleAutoFillDemo = () => {
-    setValue("email", "developer@notepilot.ai", { shouldValidate: true });
-    setValue("password", "sandboxSecretPass123", { shouldValidate: true });
-  };
-
   return (
-    // ফুল-স্ক্রিন ব্যাকগ্রাউন্ড এবং উপর-নিচে নিখুঁত স্পেসিং (Padding Y) দেওয়ার জন্য বাইরের এই কন্টেইনারটি যুক্ত করা হয়েছে
+    // ফুল-স্ক্রিন ব্যাকগ্রাউন্ড এবং নিখুঁত ভার্টিক্যাল স্পেসিং লেআউট
     <div className="min-h-screen w-full flex flex-col justify-center items-center bg-slate-50/50 px-4 py-12 md:py-20">
 
-      {/* মূল লগইন কার্ড */}
+      {/* মূল রেজিস্ট্রেশন কার্ড */}
       <div className="w-full max-w-md bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/40 space-y-6">
 
         {/* ─── HEADING & SUBHEADING ─── */}
         <div className="text-center space-y-2">
-          <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
+          <h1 className="text-2xl font-bold text-slate-900">Create Your Account</h1>
           <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
-            Sign in to your NotePilot AI account to access your notes, AI summaries, and personalized recommendations.
+            Join NotePilot AI to organize your notes, generate AI summaries, and get smart recommendations.
           </p>
         </div>
 
@@ -68,7 +61,7 @@ export default function LoginForm() {
 
         {/* ─── GOOGLE THIRD PARTY SIGN IN ─── */}
         <GoogleLoginButton
-          onClick={() => alert("Redirecting to Google...")}
+          onClick={() => alert("Redirecting to Google OAuth...")}
           isLoading={isLoading}
           text="Continue with Google"
         />
@@ -81,7 +74,34 @@ export default function LoginForm() {
         </div>
 
         {/* ─── NATIVE PRIMARY FORM ─── */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+          {/* Full Name Field Group */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-extrabold text-slate-600 uppercase tracking-wider block">
+              Full Name
+            </label>
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
+                <User className="w-4 h-4" />
+              </span>
+              <input
+                type="text"
+                disabled={isLoading}
+                placeholder="Enter your full name"
+                className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-slate-50/50 text-sm font-medium transition-colors focus:outline-none focus:bg-white ${errors.name
+                  ? "border-rose-400 focus:border-rose-500"
+                  : "border-slate-200 focus:border-blue-500"
+                  }`}
+                {...register("name", {
+                  required: "Full name is required",
+                })}
+              />
+            </div>
+            {errors.name && (
+              <p className="text-[11px] font-bold text-rose-600 pl-1">{errors.name.message}</p>
+            )}
+          </div>
 
           {/* Email Field Group */}
           <div className="space-y-1.5">
@@ -97,8 +117,8 @@ export default function LoginForm() {
                 disabled={isLoading}
                 placeholder="Enter your email"
                 className={`w-full pl-10 pr-4 py-3 rounded-xl border bg-slate-50/50 text-sm font-medium transition-colors focus:outline-none focus:bg-white ${errors.email
-                    ? "border-rose-400 focus:border-rose-500"
-                    : "border-slate-200 focus:border-blue-500"
+                  ? "border-rose-400 focus:border-rose-500"
+                  : "border-slate-200 focus:border-blue-500"
                   }`}
                 {...register("email", {
                   required: "Email is required",
@@ -116,14 +136,9 @@ export default function LoginForm() {
 
           {/* Password Field Group */}
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="text-[11px] font-extrabold text-slate-600 uppercase tracking-wider">
-                Password
-              </label>
-              <a href="#" className="text-[11px] font-bold text-blue-600 hover:underline">
-                Forgot?
-              </a>
-            </div>
+            <label className="text-[11px] font-extrabold text-slate-600 uppercase tracking-wider block">
+              Password
+            </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-400">
                 <Lock className="w-4 h-4" />
@@ -131,10 +146,10 @@ export default function LoginForm() {
               <input
                 type={showPassword ? "text" : "password"}
                 disabled={isLoading}
-                placeholder="Enter your password"
+                placeholder="Create a password"
                 className={`w-full pl-10 pr-10 py-3 rounded-xl border bg-slate-50/50 text-sm font-medium transition-colors focus:outline-none focus:bg-white ${errors.password
-                    ? "border-rose-400 focus:border-rose-500"
-                    : "border-slate-200 focus:border-blue-500"
+                  ? "border-rose-400 focus:border-rose-500"
+                  : "border-slate-200 focus:border-blue-500"
                   }`}
                 {...register("password", {
                   required: "Password is required",
@@ -162,32 +177,27 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-slate-900 text-white hover:bg-blue-600 disabled:bg-slate-400 shadow-md transition-all duration-300 cursor-pointer active:scale-[0.99] select-none"
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 mt-2 rounded-xl text-sm font-bold bg-slate-900 text-white hover:bg-blue-600 disabled:bg-slate-400 shadow-md transition-all duration-300 cursor-pointer active:scale-[0.99] select-none"
           >
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Signing In...</span>
+                <span>Creating Account...</span>
               </>
             ) : (
               <>
-                <span>Sign In</span>
-                <LogIn className="w-4 h-4" />
+                <span>Create Account</span>
+                <UserPlus className="w-4 h-4" />
               </>
             )}
           </button>
         </form>
 
-        {/* Sandbox Trigger Divider */}
-        <div className="pt-2">
-          <DemoLoginButton onFillDemo={handleAutoFillDemo} isLoading={isLoading} text="Use Demo Account" />
-        </div>
-
-        {/* Bottom Registration Text */}
-        <p className="text-center text-xs text-slate-500">
-          Don't have an account?{" "}
-          <a href="/register" className="font-bold text-blue-600 hover:underline">
-            Create one
+        {/* Bottom Redirection Text */}
+        <p className="text-center text-xs text-slate-500 pt-2">
+          Already have an account?{" "}
+          <a href="/login" className="font-bold text-blue-600 hover:underline">
+            Sign In
           </a>
         </p>
       </div>
