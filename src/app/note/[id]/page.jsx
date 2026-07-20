@@ -15,7 +15,7 @@ export default function NoteDetailsPage() {
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
-    console.log(id,"noteid")
+    console.log(id, "noteid")
 
     useEffect(() => {
 
@@ -23,7 +23,7 @@ export default function NoteDetailsPage() {
 
             console.log("NOTE ID:", id);
 
-            const res = await fetch(`http://localhost:5000/notes/${id}`);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/notes/${id}`);
 
             const data = await res.json();
 

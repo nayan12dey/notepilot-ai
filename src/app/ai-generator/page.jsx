@@ -17,7 +17,7 @@ export default function AIGeneratorPage() {
         try {
             setLoading(true);
             const res = await fetch(
-                "http://localhost:5000/generate-note",
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/generate-note`,
                 {
                     method: "POST",
                     headers: {

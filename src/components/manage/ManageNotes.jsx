@@ -25,7 +25,7 @@ export default function ManageNotes() {
 
             setLoading(true);
 
-            const res = await fetch(`http://localhost:5000/my-notes?email=${email}`);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-notes?email=${email}`);
 
             const data = await res.json();
 

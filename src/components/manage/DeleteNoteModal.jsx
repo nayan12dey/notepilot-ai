@@ -16,7 +16,7 @@ export default function DeleteNoteModal({
         try {
 
             const res = await fetch(
-                `http://localhost:5000/notes/${noteId}`,
+                `${process.env.NEXT_PUBLIC_SERVER_URL}/notes/${noteId}`,
                 {
                     method: "DELETE"
                 }

@@ -60,7 +60,7 @@ export default function ExplorePage() {
         }
 
         const res = await fetch(
-          `http://localhost:5000/notes?${params}`
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/notes?${params}`
         );
 
         const data = await res.json();
