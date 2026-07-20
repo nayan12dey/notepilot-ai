@@ -24,7 +24,8 @@ export default function ExplorePage() {
   // const [dateRange, setDateRange] = useState("all-time");
   const [sortBy, setSortBy] = useState("newest");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 1;
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalNotes, setTotalNotes] = useState(0);
 
   const [notes, setNotes] = useState([]);
 
@@ -39,6 +40,9 @@ export default function ExplorePage() {
         setIsLoading(true);
 
         const params = new URLSearchParams();
+        params.append("page", currentPage);
+        params.append("limit", 8);
+
         if (searchQuery) {
           params.append("search", searchQuery);
         }
@@ -60,7 +64,9 @@ export default function ExplorePage() {
         );
 
         const data = await res.json();
-        setNotes(data);
+        setNotes(data.notes);
+        setTotalPages(data.totalPages);
+        setTotalNotes(data.totalNotes);
 
 
       } catch (error) {
@@ -79,7 +85,8 @@ export default function ExplorePage() {
   }, [
     searchQuery,
     category,
-    sortBy
+    sortBy,
+    currentPage
   ]);
 
 
@@ -134,13 +141,13 @@ export default function ExplorePage() {
         <div className="space-y-8">
 
           {/* রেজাল্ট কাউন্টার */}
-          {!isLoading && notes.length > 0 && (
+          {/* {!isLoading && notes.length > 0 && (
             <div className="px-2">
               <h2 className="text-lg font-extrabold text-slate-900">
                 All Notes ({notes.length})
               </h2>
             </div>
-          )}
+          )} */}
 
           {/* কন্ডিশনাল রেন্ডারিং ব্লক */}
           {isLoading ? (

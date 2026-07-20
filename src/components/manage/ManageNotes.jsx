@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import LoadingSkeleton from "./LoadingSkeleton";
 import EmptyState from "./EmptyState";
 import NoteCard from "./NoteCard";
+import { authClient, useSession } from "@/lib/auth-client";
 
 
 
@@ -12,11 +13,19 @@ export default function ManageNotes() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    
+
     const fetchNotes = async () => {
         try {
+
+             const session = await authClient.getSession();
+             const email = session?.data?.user?.email;
+             console.log(email)
+
+
             setLoading(true);
 
-            const res = await fetch("http://localhost:5000/notes");
+            const res = await fetch(`http://localhost:5000/my-notes?email=${email}`);
 
             const data = await res.json();
 
