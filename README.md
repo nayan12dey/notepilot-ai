@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NotePilot AI
 
-## Getting Started
+NotePilot AI is a modern, responsive AI-powered note-taking and management application built with Next.js 16 (App Router). It offers a seamless experience for creating, organizing, and exploring notes with the help of artificial intelligence.
 
-First, run the development server:
+## ✨ Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI-Powered Note Generation:** Leverage AI to quickly generate, summarize, or enhance your notes.
+- **Secure Authentication:** Robust user authentication (Login/Register) powered by `better-auth` with MongoDB integration.
+- **Beautiful & Responsive UI:** Crafted with Tailwind CSS v4 and HeroUI v3, featuring a premium design, glassmorphism effects, and smooth transitions.
+- **Rich Markdown Support:** View and format your notes using comprehensive Markdown rendering with `react-markdown`.
+- **Note Management System:** Easily create, manage, and explore your notes seamlessly.
+- **Modern Landing & Layout:** Includes beautifully designed landing pages (Features, Testimonials, FAQ) for an engaging user experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **UI & Styling:** [HeroUI v3](https://heroui.com/), [Tailwind CSS v4](https://tailwindcss.com/)
+- **Database:** [MongoDB](https://www.mongodb.com/)
+- **Authentication:** [Better Auth](https://better-auth.com/)
+- **Icons:** [Lucide React](https://lucide.dev/), React Icons
+- **Utilities:** React Hook Form, React Query, React Markdown, Recharts, Axios
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+Ensure you have the following installed on your machine:
+- Node.js (v18 or higher recommended)
+- npm, yarn, pnpm, or bun
+- A MongoDB database (local or cloud)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository and navigate into the project directory:
+   ```bash
+   git clone <your-repo-url>
+   cd notepilot-ai
+   ```
 
-## Deploy on Vercel
+2. Install the dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and configure your MongoDB connection string and Better Auth secrets.
+   ```env
+   # Example .env.local configuration
+   MONGODB_URI=your_mongodb_connection_string
+   BETTER_AUTH_SECRET=your_secret_key
+   # Add other required environment variables here
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📁 Project Structure
+
+- `src/app`: Contains the Next.js App Router pages (Home, Login, Register, Note Management, AI Generator, etc.).
+- `src/components`: Reusable UI components categorized by feature (Home, Auth, Note, Shared, etc.).
+- `src/lib`: Utility functions, database configuration, and helpers.
+- `public`: Static assets.
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
