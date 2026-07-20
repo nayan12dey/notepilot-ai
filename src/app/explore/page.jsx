@@ -31,61 +31,35 @@ export default function ExplorePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 4; // ডামি পেজ কাউন্টার
 
-  // --- ২. ডামি নোটস ডাটাবেজ ---
-  const dummyNotes = [
-    {
-      id: 1,
-      title: "Decentralized Image Storage Solution using IPFS and Solidity",
-      description: "An architectural deep-dive into creating tamper-proof media sharing layers on Ethereum blockchain.",
-      category: "Blockchain",
-      readTime: "7 min read",
-      date: "Jul 15, 2026",
-      imageUrl: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      id: 2,
-      title: "Mastering Next.js Interleaved Component States & Clients",
-      description: "How 'use client' directives impact bundle split sizes, tree-shaking, and state hydration.",
-      category: "Next.js",
-      readTime: "5 min read",
-      date: "Jul 12, 2026",
-      imageUrl: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      id: 3,
-      title: "Building Micro-frontends with Tailwind Utility Layers",
-      description: "A comprehensive guide to managing shareable UI tokens across distributed sub-systems smoothly.",
-      category: "CSS",
-      readTime: "4 min read",
-      date: "Jul 10, 2026",
-      imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      id: 4,
-      title: "Smart Contract Gas Optimization Patterns & Techniques",
-      description: "Advanced techniques to minimize transaction execution fees using precise EVM bytecode analytics.",
-      category: "Solidity",
-      readTime: "9 min read",
-      date: "Jul 08, 2026",
-      imageUrl: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=800&auto=format&fit=crop"
-    }
-  ];
+  const [notes, setNotes] = useState([]);
 
-  // --- ৩. রিয়েল লাইফ লোডিং সিমুলেশন ---
-  // ইউজার পেজে আসলে বা পেজ নম্বর পরিবর্তন করলে স্কেলেটন অ্যানিমেশন ট্রিগার হবে
+
+
   useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1200); // ১.২ সেকেন্ড পর স্কেলেটন চলে যাবে
-    return () => clearTimeout(timer);
-  }, [currentPage, category, sortBy]); // এই ফিল্টারগুলো বদলালেও লোডিং অ্যানিমেশন হবে
+    const fetchNotes = async () => {
+      try {
+        setIsLoading(true);
+
+        const res = await fetch("http://localhost:5000/notes");
+
+        const data = await res.json();
+
+        setNotes(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNotes();
+  }, []);
 
   // --- ৪. ফিল্টার ও সার্চ লজিক ---
-  const filteredNotes = dummyNotes.filter((note) => {
+  const filteredNotes = notes.filter((note) => {
     const matchesSearch =
       note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      note.description.toLowerCase().includes(searchQuery.toLowerCase());
+      shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesCategory = category === "All" || note.category === category;
     return matchesSearch && matchesCategory;
@@ -93,9 +67,13 @@ export default function ExplorePage() {
 
   // --- ৫. সর্টিং লজিক ---
   const sortedNotes = [...filteredNotes].sort((a, b) => {
-    if (sortBy === "alphabetical") return a.title.localeCompare(b.title);
-    if (sortBy === "oldest") return new Date(a.date) - new Date(b.date);
-    return new Date(b.date) - new Date(a.date); // Newest
+    if (sortBy === "alphabetical")
+      return a.title.localeCompare(b.title);
+
+    if (sortBy === "oldest")
+      return new Date(a.createdAt) - new Date(b.createdAt);
+
+    return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
   // --- ৬. অল ক্লিয়ার হ্যান্ডলার (রিসেট) ---

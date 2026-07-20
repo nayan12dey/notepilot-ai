@@ -3,6 +3,8 @@
 import React from "react";
 
 export default function NoteContent({ content }) {
+
+    console.log(content, "note content")
   return (
     <article className="prose prose-slate max-w-none">
       {content.split('\n\n').map((paragraph, index) => (
