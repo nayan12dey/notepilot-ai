@@ -14,8 +14,8 @@ export default function SortDropdown({ value = "newest", onChange }) {
     const sortOptions = [
         { value: "newest", label: "Newest First" },
         { value: "oldest", label: "Oldest First" },
-        { value: "alphabetical", label: "Title: A - Z" },
-        { value: "popular", label: "Most Popular" }
+        // { value: "alphabetical", label: "Title: A - Z" },
+        // { value: "popular", label: "Most Popular" }
     ];
 
     return (
@@ -45,3 +45,5 @@ export default function SortDropdown({ value = "newest", onChange }) {
         </div>
     );
 }
+
+

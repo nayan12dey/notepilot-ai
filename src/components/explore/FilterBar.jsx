@@ -14,21 +14,21 @@ import { SlidersHorizontal, Calendar, Folder, RotateCcw } from "lucide-react";
 export default function FilterBar({
     selectedCategory = "All",
     onCategoryChange,
-    selectedDateRange = "all-time",
-    onDateRangeChange,
+    // selectedDateRange = "all-time",
+    // onDateRangeChange,
     onReset
 }) {
 
     // ডামি অপশন ডেটা
     const categories = ["All", "Tech", "Dev", "Design", "Business", "AI"];
 
-    const dateOptions = [
-        { value: "all-time", label: "All Time" },
-        { value: "today", label: "Today" },
-        { value: "this-week", label: "This Week" },
-        { value: "this-month", label: "This Month" },
-        { value: "this-year", label: "This Year" }
-    ];
+    // const dateOptions = [
+    //     { value: "all-time", label: "All Time" },
+    //     { value: "today", label: "Today" },
+    //     { value: "this-week", label: "This Week" },
+    //     { value: "this-month", label: "This Month" },
+    //     { value: "this-year", label: "This Year" }
+    // ];
 
     return (
         <div className="w-full bg-slate-50 border-2 border-slate-200 rounded-3xl p-5 md:p-6 transition-all duration-300">
@@ -66,7 +66,7 @@ export default function FilterBar({
                     <div className="hidden md:block w-[1px] h-8 bg-slate-200 self-center" />
 
                     {/* 2. Date Filter Dropdown */}
-                    <div className="flex items-center gap-3 shrink-0">
+                    {/* <div className="flex items-center gap-3 shrink-0">
                         <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-wider select-none">
                             <Calendar className="w-3.5 h-3.5 text-blue-600" />
                             <span>Timeframe</span>
@@ -88,12 +88,12 @@ export default function FilterBar({
                                 ▼
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
 
                 {/* Right Side: Reset Action Button */}
-                {(selectedCategory !== "All" || selectedDateRange !== "all-time") && onReset && (
+                {selectedCategory !== "All" && onReset && (
                     <div className="pt-4 border-t border-slate-200/60 lg:pt-0 lg:border-t-0 lg:pl-4 flex justify-end shrink-0 animate-fadeIn">
                         <button
                             type="button"

@@ -9,12 +9,7 @@ import Pagination from "@/components/explore/Pagination";
 import SearchBar from "@/components/explore/SearchBar";
 import SortDropdown from "@/components/explore/SortDropdown";
 import React, { useState, useEffect } from "react";
-// আপনার ফোল্ডার স্ট্রাকচার অনুযায়ী পাথগুলো চেক করে নেবেন
-// import ExploreHeader from "@/components/explore/ExploreHeader";
-// import SearchBar from "@/components/explore/SearchBar";
-// import FilterBar from "@/components/ui/FilterBar";
-// import SortDropdown from "@/components/ui/SortDropdown";
-// import NotesGrid from "@/components/ui/NotesGrid";
+
 
 // নতুন তৈরি করা ৩টি প্রফেশনাল কম্পোনেন্ট
 // import NoteCardSkeleton from "@/components/ui/NoteCardSkeleton";
@@ -26,55 +21,69 @@ export default function ExplorePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("All");
-  const [dateRange, setDateRange] = useState("all-time");
+  // const [dateRange, setDateRange] = useState("all-time");
   const [sortBy, setSortBy] = useState("newest");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 4; // ডামি পেজ কাউন্টার
+  const totalPages = 1;
 
   const [notes, setNotes] = useState([]);
 
 
 
   useEffect(() => {
+
     const fetchNotes = async () => {
+
       try {
+
         setIsLoading(true);
 
-        const res = await fetch("http://localhost:5000/notes");
+        const params = new URLSearchParams();
+        if (searchQuery) {
+          params.append("search", searchQuery);
+        }
+
+        if (category !== "All") {
+          params.append("category", category);
+        }
+
+        // if (dateRange !== "all-time") {
+        //   params.append("date", dateRange);
+        // }
+
+        if (sortBy) {
+          params.append("sort", sortBy);
+        }
+
+        const res = await fetch(
+          `http://localhost:5000/notes?${params}`
+        );
 
         const data = await res.json();
-
         setNotes(data);
+
+
       } catch (error) {
-        console.error(error);
-      } finally {
+
+        console.log(error);
+
+      }
+      finally {
         setIsLoading(false);
       }
+
     };
 
     fetchNotes();
-  }, []);
 
-  // --- ৪. ফিল্টার ও সার্চ লজিক ---
-  const filteredNotes = notes.filter((note) => {
-    const matchesSearch =
-      note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      shortDescription.toLowerCase().includes(searchQuery.toLowerCase());
+  }, [
+    searchQuery,
+    category,
+    sortBy
+  ]);
 
-    const matchesCategory = category === "All" || note.category === category;
-    return matchesSearch && matchesCategory;
-  });
 
-  // --- ৫. সর্টিং লজিক ---
-  const sortedNotes = [...filteredNotes].sort((a, b) => {
-    if (sortBy === "alphabetical")
-      return a.title.localeCompare(b.title);
 
-    if (sortBy === "oldest")
-      return new Date(a.createdAt) - new Date(b.createdAt);
-
-    return new Date(b.createdAt) - new Date(a.createdAt);
-  });
 
   // --- ৬. অল ক্লিয়ার হ্যান্ডলার (রিসেট) ---
   const handleResetFilters = () => {
@@ -115,8 +124,8 @@ export default function ExplorePage() {
               setCategory(cat);
               setCurrentPage(1);
             }}
-            selectedDateRange={dateRange}
-            onDateRangeChange={setDateRange}
+            // selectedDateRange={dateRange}
+            // onDateRangeChange={setDateRange}
             onReset={handleResetFilters}
           />
         </div>
@@ -125,10 +134,10 @@ export default function ExplorePage() {
         <div className="space-y-8">
 
           {/* রেজাল্ট কাউন্টার */}
-          {!isLoading && sortedNotes.length > 0 && (
+          {!isLoading && notes.length > 0 && (
             <div className="px-2">
               <h2 className="text-lg font-extrabold text-slate-900">
-                All Notes ({sortedNotes.length})
+                All Notes ({notes.length})
               </h2>
             </div>
           )}
@@ -141,9 +150,9 @@ export default function ExplorePage() {
                 <NoteCardSkeleton key={index} />
               ))}
             </div>
-          ) : sortedNotes.length > 0 ? (
+          ) : notes.length > 0 ? (
             // ২. ডাটা সফলভাবে পাওয়া গেলে মেইন অপ্টিমাইজড গ্রিড দেখাবে
-            <NotesGrid notes={sortedNotes} />
+            <NotesGrid notes={notes} />
           ) : (
             // ৩. সার্চ বা ফিল্টারে ডাটা না মিললে প্রিমিয়াম এম্পটি স্টেট দেখাবে
             <EmptyState
@@ -155,7 +164,7 @@ export default function ExplorePage() {
           )}
 
           {/* কন্টেন্ট লেয়ার ৪: প্রিমিয়াম পেজ নম্বর নেভিগেশন */}
-          {!isLoading && sortedNotes.length > 0 && (
+          {!isLoading && notes.length > 0 && (
             <div className="pt-6">
               <Pagination
                 currentPage={currentPage}
