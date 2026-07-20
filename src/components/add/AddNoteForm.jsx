@@ -10,6 +10,14 @@ export default function AddNoteForm({ user }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
+    const categories = [
+        "Tech",
+        "Dev",
+        "Design",
+        "Business",
+        "AI"
+    ];
+
     const {
         register,
         handleSubmit,
@@ -96,18 +104,46 @@ export default function AddNoteForm({ user }) {
                 <label className="text-sm font-bold text-slate-700">
                     Category
                 </label>
+
                 <div className="relative mt-2">
-                    <Folder
-                        className="absolute left-3 top-3.5 text-slate-400 w-5"
-                    />
-                    <input
+                    <Folder className="absolute left-3 top-3.5 text-slate-400 w-5 pointer-events-none" />
+
+                    <select
                         {...register("category", { required: true })}
-                        placeholder="Web Development"
-                        className="w-full pl-11 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 transition-colors"
-                    />
+                        defaultValue=""
+                        className="w-full pl-11 pr-10 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 transition-colors bg-white appearance-none cursor-pointer"
+                    >
+                        <option value="" disabled>
+                            Select Category
+                        </option>
+
+                        {categories.map((category) => (
+                            <option
+                                key={category}
+                                value={category}
+                            >
+                                {category}
+                            </option>
+                        ))}
+                    </select>
+
+                    <svg
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                        />
+                    </svg>
                 </div>
             </div>
 
+            
             {/* Short Description */}
             <div>
                 <label className="text-sm font-bold text-slate-700">

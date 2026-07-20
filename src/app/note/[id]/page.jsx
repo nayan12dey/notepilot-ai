@@ -76,7 +76,7 @@ export default function NoteDetailsPage() {
                 />
 
                 {/* AI Summary Layer Component */}
-                <AISummary summary={"AI Summary is not available yet."} />
+                <AISummary summary={note?.shortDescription || "AI Summary is not available yet."} />
 
                 {/* Main Note Narrative / Content Component */}
                 <NoteContent content={note?.content} />

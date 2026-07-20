@@ -21,8 +21,8 @@ export default function NavLinks({
 
 
   const privateLinks = [
-    { label: "Add Note", href: "/add-note" },
-    { label: "Manage Notes", href: "/manage-notes" },
+    { label: "Add Note", href: "/note/add" },
+    { label: "Manage Notes", href: "/note/manage" },
   ];
 
 
