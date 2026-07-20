@@ -75,9 +75,9 @@ export default function UserMenu({ isLoggedIn, user, onLogout }) {
             </DropdownItem>
 
             <DropdownItem id="profile" textValue="Profile" className="px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800/40 transition-colors duration-200">
-              <Link href="/profile" className="flex items-center gap-2 w-full text-zinc-700 dark:text-zinc-300">
+              <Link href="/ai-generator" className="flex items-center gap-2 w-full text-zinc-700 dark:text-zinc-300">
                 <User className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
-                <span className="text-sm font-medium cursor-pointer">My Profile</span>
+                <span className="text-sm font-medium cursor-pointer">AI Generator</span>
               </Link>
             </DropdownItem>
 

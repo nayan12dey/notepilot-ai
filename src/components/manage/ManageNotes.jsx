@@ -13,19 +13,27 @@ export default function ManageNotes() {
     const [notes, setNotes] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    
+
 
     const fetchNotes = async () => {
         try {
 
-             const session = await authClient.getSession();
-             const email = session?.data?.user?.email;
-             console.log(email)
+            const session = await authClient.getSession();
+            const email = session?.data?.user?.email;
+            console.log(email)
+
+           
+        const {data: token} = await authClient.token()
+        console.log(token)
 
 
             setLoading(true);
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-notes?email=${email}`);
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-notes?email=${email}`, {
+                headers: {
+                    authorization : `Bearer ${token?.token}`
+                }
+            });
 
             const data = await res.json();
 
