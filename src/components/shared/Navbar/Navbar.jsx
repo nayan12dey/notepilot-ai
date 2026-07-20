@@ -12,7 +12,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: session, pending } = useSession();
 
-  
+
 
   const isLoggedIn = !!session?.user;
   const user = session?.user;
@@ -36,7 +36,9 @@ export default function Navbar() {
 
         {/* Center: Desktop Links */}
         <nav className="hidden md:block">
-          <NavLinks className="gap-1 items-center" />
+          <NavLinks className="gap-1 items-center"
+            isLoggedIn={isLoggedIn}
+          />
         </nav>
 
         {/* Right: Auth / User Menu & Mobile Trigger */}
