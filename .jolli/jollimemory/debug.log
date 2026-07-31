@@ -1,0 +1,57 @@
+[2026-07-31T05:56:44.783Z] INFO  [StorageFactory] StorageFactory.create: storageMode=dual-write, projectPath=c:\Projects\notepilot-ai
+[2026-07-31T05:56:45.189Z] INFO  [StorageFactory] Storage mode: dual-write (primary=orphan, shadow=folder)
+[2026-07-31T05:56:45.218Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:56:45.950Z] WARN  [SummaryStore] loadIndex: index.json unreadable from Iw (fresh repo or backend read failed)
+[2026-07-31T05:56:46.583Z] INFO  [Sync:VsCodeBootstrap] Memory Bank sync engine built (auto-sync off — manual only)
+[2026-07-31T05:56:46.624Z] INFO  [StorageFactory] StorageFactory.create: storageMode=dual-write, projectPath=c:\Projects\notepilot-ai
+[2026-07-31T05:56:46.773Z] INFO  [StorageFactory] Storage mode: dual-write (primary=orphan, shadow=folder)
+[2026-07-31T05:56:46.888Z] INFO  [StorageFactory] StorageFactory.create: storageMode=dual-write, projectPath=c:\Projects\notepilot-ai
+[2026-07-31T05:56:47.030Z] INFO  [StorageFactory] Storage mode: dual-write (primary=orphan, shadow=folder)
+[2026-07-31T05:56:47.208Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:56:47.233Z] INFO  [bridge] Merged mode activated {"branch":"main","creationPoint":"599d81ad","author":"Nayan Dey"}
+[2026-07-31T05:56:57.843Z] INFO  [SchemaV5Migration] Storage backend not initialized yet — skipping schema v5 migration (no data to migrate)
+[2026-07-31T05:56:57.844Z] INFO  [activate] Schema v5 migration: alreadyDone=false fresh=true migrated=0 skipped=0
+[2026-07-31T05:56:59.335Z] WARN  [ReadStorageResolver] createReadStorage: folder lacks index.json — falling back to orphan branch (migration incomplete, or folder wiped)
+[2026-07-31T05:56:59.461Z] WARN  [SummaryStore] loadIndex: index.json unreadable from Qr (fresh repo or backend read failed)
+[2026-07-31T05:57:04.472Z] INFO  [Installer] Status: enabled=false, claude=false, git=false, geminiHook=false, worktreeHooks=false, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=0, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:04.476Z] INFO  [Installer] Status: enabled=false, claude=false, git=false, geminiHook=false, worktreeHooks=false, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=0, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:04.478Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:57:05.396Z] INFO  [Installer] Status: enabled=false, claude=false, git=false, geminiHook=false, worktreeHooks=false, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=0, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:05.413Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:57:06.148Z] INFO  [Installer] Status: enabled=false, claude=false, git=false, geminiHook=false, worktreeHooks=false, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=0, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:06.234Z] INFO  [activate] Auto-enabling Jolli Memory (no opt-out recorded)
+[2026-07-31T05:57:06.234Z] INFO  [bridge] enable() called
+[2026-07-31T05:57:06.328Z] INFO  [Installer] Installing Jolli Memory hooks
+[2026-07-31T05:57:06.438Z] INFO  [DispatchScripts] Wrote resolve-dist-path, run-hook, and run-cli scripts to C:\Users\NAYAN\.jolli\jollimemory
+[2026-07-31T05:57:06.441Z] INFO  [DistPathWriter] Kept dist-paths/vscode at complete version=0.99.9 (candidate=0.99.9)
+[2026-07-31T05:57:06.455Z] INFO  [SkillInstaller] Wrote SKILL.md (revision 1) to C:\Projects\notepilot-ai\.agents\skills\jolli-recall\SKILL.md
+[2026-07-31T05:57:06.458Z] INFO  [SkillInstaller] Wrote SKILL.md (revision 1) to C:\Projects\notepilot-ai\.agents\skills\jolli-search\SKILL.md
+[2026-07-31T05:57:06.463Z] INFO  [SkillInstaller] Wrote SKILL.md (revision 5) to C:\Projects\notepilot-ai\.agents\skills\jolli-local-run\SKILL.md
+[2026-07-31T05:57:06.469Z] INFO  [SkillInstaller] Wrote SKILL.md (revision 4) to C:\Projects\notepilot-ai\.agents\skills\jolli-remote-run\SKILL.md
+[2026-07-31T05:57:06.473Z] INFO  [SkillInstaller] Wrote SKILL.md (revision 5) to C:\Projects\notepilot-ai\.agents\skills\jolli\SKILL.md
+[2026-07-31T05:57:06.571Z] INFO  [GitExclude] Updated C:\Projects\notepilot-ai\.git\info\exclude with 7 Jolli skill exclude paths
+[2026-07-31T05:57:06.573Z] INFO  [McpRegistration] Registered MCP server in C:\Projects\notepilot-ai\.mcp.json
+[2026-07-31T05:57:06.581Z] INFO  [JsonMcpWriter] Registered MCP server in C:\Users\NAYAN\.gemini\settings.json
+[2026-07-31T05:57:06.584Z] INFO  [CodexTomlWriter] Registered Codex MCP server in C:\Users\NAYAN\.codex\config.toml
+[2026-07-31T05:57:06.589Z] INFO  [JsonMcpWriter] Registered MCP server in C:\Users\NAYAN\AppData\Roaming\Code\User\mcp.json
+[2026-07-31T05:57:06.597Z] INFO  [GitHookInstaller] Git post-commit hook installed
+[2026-07-31T05:57:06.601Z] INFO  [GitHookInstaller] Git post-rewrite hook installed
+[2026-07-31T05:57:06.605Z] INFO  [GitHookInstaller] Git prepare-commit-msg hook installed
+[2026-07-31T05:57:06.608Z] INFO  [GitHookInstaller] Git post-merge hook installed
+[2026-07-31T05:57:06.612Z] INFO  [GitHookInstaller] Git pre-push hook installed
+[2026-07-31T05:57:06.616Z] INFO  [GeminiHookInstaller] Gemini AfterAgent hook installed
+[2026-07-31T05:57:06.617Z] INFO  [Installer] Skipping v5 migration on vscode-extension source — Extension.ts owns it with UI
+[2026-07-31T05:57:06.617Z] INFO  [Installer] Installation complete
+[2026-07-31T05:57:06.619Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:57:06.636Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:57:07.033Z] INFO  [initialLoad] All panels loaded — updating status bar
+[2026-07-31T05:57:07.033Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:57:07.137Z] WARN  [SummaryStore] loadIndex: index.json unreadable from Qr (fresh repo or backend read failed)
+[2026-07-31T05:57:07.713Z] INFO  [Installer] Status: enabled=true, claude=true, git=true, geminiHook=true, worktreeHooks=true, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=1, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:07.715Z] INFO  [Installer] Checking Jolli Memory status
+[2026-07-31T05:57:07.746Z] INFO  [Installer] Status: enabled=true, claude=true, git=true, geminiHook=true, worktreeHooks=true, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=1, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:08.205Z] INFO  [Installer] Status: enabled=true, claude=true, git=true, geminiHook=true, worktreeHooks=true, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=1, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
+[2026-07-31T05:57:08.221Z] INFO  [StorageFactory] StorageFactory.create: storageMode=dual-write, projectPath=c:\Projects\notepilot-ai
+[2026-07-31T05:57:08.455Z] INFO  [StorageFactory] Storage mode: dual-write (primary=orphan, shadow=folder)
+[2026-07-31T05:57:08.781Z] WARN  [SummaryStore] loadIndex: index.json unreadable from Iw (fresh repo or backend read failed)
+[2026-07-31T05:57:09.254Z] INFO  [Installer] Status: enabled=true, claude=true, git=true, geminiHook=true, worktreeHooks=true, sessions=0, summaries=0, codex=true/true, gemini=true/true, enabledWorktrees=1, opencode=false/undefined, cursor=false/undefined, copilot=false/true, copilotChat=true, cline=false/undefined
