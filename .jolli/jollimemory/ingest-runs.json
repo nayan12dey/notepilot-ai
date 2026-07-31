@@ -1,0 +1,14 @@
+[
+	{
+		"startedAt": "2026-07-31T06:41:40.583Z",
+		"durationMs": 13744,
+		"triggeredBy": "post-commit",
+		"outcome": "OK",
+		"batches": 1,
+		"ingested": 1,
+		"touchedSlugs": 1,
+		"routeCalls": 1,
+		"reconcileCalls": 1,
+		"topicFailures": []
+	}
+]
