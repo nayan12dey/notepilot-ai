@@ -89,7 +89,7 @@ export default function Home() {
       <Features></Features>
       <HowItWorks></HowItWorks>
       <AIFeatures></AIFeatures>
-      <Statistics></Statistics>
+      {/* <Statistics></Statistics> */}
       <Testimonials></Testimonials>
       <FAQ></FAQ>
     </div>
