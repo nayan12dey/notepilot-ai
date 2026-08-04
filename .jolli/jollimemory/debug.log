@@ -329,3 +329,115 @@
 [2026-07-31T06:52:38.003Z] INFO  [LlmClient] [trace=78259cfc707fa594f7744156406ca869] Proxy LLM call: action=graph-edges url=https://jolli.ai/api/push/llm/complete
 [2026-07-31T06:53:02.617Z] INFO  [LlmClient] [trace=78259cfc707fa594f7744156406ca869] Proxy LLM response: action=graph-edges latency=24613ms
 [2026-07-31T06:53:02.627Z] INFO  [GraphBuilder] [trace=78259cfc707fa594f7744156406ca869] Knowledge graph built (incremental): 1 categories, 2 topics, 11 units, 6 edges in 40655ms -> C:\Users\NAYAN\Documents\jolli\notepilot-ai\.jolli\graph\graph.json
+[2026-07-31T06:58:35.482Z] INFO  [PrepareMsgHook] === Prepare-commit-msg hook started (source: message) ===
+[2026-07-31T06:58:35.736Z] INFO  [PrepareMsgHook] === Prepare-commit-msg hook finished ===
+[2026-07-31T06:58:36.548Z] INFO  [PostCommitHook] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Detected operation: commit
+[2026-07-31T06:58:36.647Z] INFO  [PostCommitHook] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Enqueued: type=commit hash=78d73089
+[2026-07-31T06:58:36.648Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Launching background worker
+[2026-07-31T06:58:36.657Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Background worker spawned (PID: 24032)
+[2026-07-31T06:58:36.874Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] === Queue worker started === node=22.14.0 kind=vscode-plugin source=vscode pkgVer=0.99.9 cliVer=0.99.9 dist=c:\Users\NAYAN\.vscode\extensions\jolli.jollimemory-vscode-0.99.9\dist
+[2026-07-31T06:58:36.880Z] INFO  [StorageFactory] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] StorageFactory.create: storageMode=dual-write, projectPath=C:\Projects\notepilot-ai
+[2026-07-31T06:58:36.983Z] INFO  [StorageFactory] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Storage mode: dual-write (primary=orphan, shadow=folder)
+[2026-07-31T06:58:36.987Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Processing queue entry: type=commit hash=78d73089
+[2026-07-31T06:58:37.054Z] INFO  [GitOps] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Commit 78d73089: feat(features): update features section for dark UI
+[2026-07-31T06:58:37.054Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Commit: 78d73089 - feat(features): update features section for dark UI (59ms)
+[2026-07-31T06:58:37.302Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] No active sessions found — will infer topics from diff if available
+[2026-07-31T06:58:37.420Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Git diff: 6 files changed, +145 -25 (116ms)
+[2026-07-31T06:58:37.570Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Prompt blocks: plans=0 notes=0 references=0 (AI soft-excluded 0)
+[2026-07-31T06:58:37.571Z] INFO  [Summarizer] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Generating summary for commit 78d73089
+[2026-07-31T06:58:37.571Z] INFO  [Summarizer] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Context: transcript=0, files=6, lines=145+25
+[2026-07-31T06:58:37.572Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] LLM call: action=summarize source=jolli-proxy
+[2026-07-31T06:58:37.573Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM call: action=summarize url=https://jolli.ai/api/push/llm/complete
+[2026-07-31T06:58:50.556Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM response: action=summarize latency=12979ms
+[2026-07-31T06:58:50.558Z] INFO  [Summarizer] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Parsed 1 topic(s) from delimited text format
+[2026-07-31T06:58:50.558Z] INFO  [Summarizer] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Summary parsed: 1 topic(s), response length: 2048 chars
+[2026-07-31T06:58:50.558Z] INFO  [Summarizer] [trace=77bc6aa82380ea7f9c3e0ffd86beb238]   Topic 1: Restyle homepage features section for dark theme UI
+[2026-07-31T06:58:50.558Z] INFO  [Summarizer] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Recap (547 chars): The homepage features section was redesigned to match the site's new dark visual theme. The background switched from bri
+[2026-07-31T06:58:50.558Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] API summary generated (13.0s)
+[2026-07-31T06:58:50.561Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Plan registry scan: found 0 uncommitted slug(s) on main: []
+[2026-07-31T06:58:50.561Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Plan association: detected 0 slug(s) from transcripts: []
+[2026-07-31T06:58:50.562Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Note registry scan: found 0 uncommitted note(s) on main: []
+[2026-07-31T06:58:50.562Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Note association: detected 0 note(s): []
+[2026-07-31T06:58:50.563Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Reference association: detected 0 ref(s) for branch main
+[2026-07-31T06:58:50.563Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Summary built for 78d73089: recap=yes, topics=1, plans=absent, notes=absent, references=absent
+[2026-07-31T06:58:51.174Z] INFO  [SidebarWebviewProvider] pushMemories: 0 item(s)
+[2026-07-31T06:58:51.467Z] WARN  [SummaryStore] loadIndex: index.json unreadable from t (fresh repo or backend read failed)
+[2026-07-31T06:58:51.348Z] INFO  [GitOps] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Updated branch 'jollimemory/summaries/v3': 3 written, 0 deleted (via fast-import)
+[2026-07-31T06:58:51.468Z] WARN  [SummaryStore] loadIndex: index.json unreadable from t (fresh repo or backend read failed)
+[2026-07-31T06:58:51.507Z] INFO  [SidebarWebviewProvider] pushMemories: 4 item(s)
+[2026-07-31T06:58:51.523Z] INFO  [MetadataManager] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Manifest updated: main/featfeatures-update-features-section-for-dark-ui-78d73089.md (commit)
+[2026-07-31T06:58:51.523Z] INFO  [FolderStorage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Markdown generated: main/featfeatures-update-features-section-for-dark-ui-78d73089.md
+[2026-07-31T06:58:51.528Z] INFO  [FolderStorage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Wrote 3 files, deleted 0 (Add summary for 78d73089: feat(features): update features section for dark U)
+[2026-07-31T06:58:51.528Z] INFO  [SummaryStore] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Summary stored successfully for commit 78d73089
+[2026-07-31T06:58:51.537Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Summary stored successfully for commit 78d73089 (974ms, 0 plans, 0 notes, 0 references)
+[2026-07-31T06:58:51.539Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] === Pipeline completed in 14.5s ===
+[2026-07-31T06:58:51.539Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] === Summary content (1 topics) ===
+[2026-07-31T06:58:51.539Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Topic: Restyle homepage features section for dark theme UI
+[2026-07-31T06:58:51.539Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238]   Trigger:   The features section of the homepage still used a bright white background and light colors, which no longer matched the site's shift to a dark visual theme already applied elsewhere.
+[2026-07-31T06:58:51.539Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238]   Response:  - Converted the features section background and text in Features.jsx from white/slate-light tones to a dark palette using slate-950 backgrounds, slate-100 text, and translucent glass-style cards.
+- Updated all six feature icons (chat, recommendations, summarization, security, search, dashboard) from saturated 600-weight colors to lighter 400-weight tones (cyan, purple, emerald, rose, amber, indigo) for better contrast against the dark background.
+- Added two soft ambient glow shapes (cyan and purple blurred blobs) behind the content for atmosphere, restyled the "Core Features" badge and per-card "Popular"/"New" tags with dark, translucent backgrounds and colored borders, and updated hover states on cards to use cyan accents and glow shadows instead of the previous blue hover style.
+[2026-07-31T06:58:51.539Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238]   Decisions: The features section was restyled with a fixed dark palette and glowing accent colors rather than keeping a light background with dark-mode overrides, matching the same direction already used for the hero and navigation sections so the whole homepage reads as one consistent design.
+[2026-07-31T06:58:51.617Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Processed 1 queue entries
+[2026-07-31T06:58:51.629Z] INFO  [SessionTracker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Enqueued queue operation: type=ingest tag=ingest file=1785481131627-00000001-d84eba5a-ingest.json
+[2026-07-31T06:58:51.637Z] INFO  [PushExecutor] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Post-queue push trigger: scheduling drain for 1 newly generated summar(ies)
+[2026-07-31T06:58:51.676Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] === Queue worker finished ===
+[2026-07-31T06:58:51.688Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Processing queue entry: type=ingest triggeredBy=post-commit
+[2026-07-31T06:58:51.631Z] INFO  [SidebarWebviewProvider] pushCommits: 1 item(s), mode=single
+[2026-07-31T06:58:51.914Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] LLM call: action=route source=jolli-proxy
+[2026-07-31T06:58:51.915Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM call: action=route url=https://jolli.ai/api/push/llm/complete
+[2026-07-31T06:58:52.014Z] INFO  [plans] detectPlans found 0 plans (0 in registry)
+[2026-07-31T06:58:52.014Z] INFO  [notes] detectNotes found 0 notes (0 in registry)
+[2026-07-31T06:58:52.014Z] INFO  [references] detectReferences(*) found 0 (0 in registry)
+[2026-07-31T06:58:52.194Z] WARN  [SummaryStore] loadIndex: index.json unreadable from t (fresh repo or backend read failed)
+[2026-07-31T06:58:52.194Z] WARN  [SummaryStore] loadIndex: index.json unreadable from t (fresh repo or backend read failed)
+[2026-07-31T06:58:52.196Z] INFO  [SidebarWebviewProvider] pushMemories: 4 item(s)
+[2026-07-31T06:58:52.975Z] INFO  [SidebarWebviewProvider] pushCommits: 1 item(s), mode=single
+[2026-07-31T06:58:56.413Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM response: action=route latency=4497ms
+[2026-07-31T06:58:56.419Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] LLM call: action=reconcile source=jolli-proxy
+[2026-07-31T06:58:56.419Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM call: action=reconcile url=https://jolli.ai/api/push/llm/complete
+[2026-07-31T06:59:03.433Z] INFO  [SidebarWebviewProvider] pushMemories: 4 item(s)
+[2026-07-31T06:59:03.553Z] INFO  [SidebarWebviewProvider] pushCommits: 1 item(s), mode=single
+[2026-07-31T06:59:11.127Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM response: action=reconcile latency=14707ms
+[2026-07-31T06:59:11.129Z] WARN  [ReconciledPage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] reconcile echoed slug dark-ui-rollout-mobile-menu-hero, keeping authoritative dark-ui-rollout
+[2026-07-31T06:59:11.593Z] INFO  [GitOps] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Updated branch 'jollimemory/summaries/v3': 1 written, 0 deleted (via fast-import)
+[2026-07-31T06:59:11.597Z] INFO  [FolderStorage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Wrote 1 files, deleted 0 (Update topic page dark-ui-rollout)
+[2026-07-31T06:59:12.014Z] INFO  [GitOps] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Updated branch 'jollimemory/summaries/v3': 1 written, 0 deleted (via fast-import)
+[2026-07-31T06:59:12.016Z] INFO  [FolderStorage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Wrote 1 files, deleted 0 (Update topic KB index (2 topics))
+[2026-07-31T06:59:12.414Z] INFO  [GitOps] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Updated branch 'jollimemory/summaries/v3': 1 written, 0 deleted (via fast-import)
+[2026-07-31T06:59:12.417Z] INFO  [FolderStorage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Wrote 1 files, deleted 0 (Update topic KB processed-source set)
+[2026-07-31T06:59:12.426Z] INFO  [QueueWorker] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Ingest drained: 1 batches, 1 sources (post-commit)
+[2026-07-31T06:59:12.604Z] INFO  [MetadataManager] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Manifest unregistered 3 entries of type=wiki
+[2026-07-31T06:59:12.612Z] INFO  [MetadataManager] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Manifest updated: _wiki/topic--navbar-dark-ui.md (wiki)
+[2026-07-31T06:59:12.616Z] INFO  [MetadataManager] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Manifest updated: _wiki/topic--dark-ui-rollout.md (wiki)
+[2026-07-31T06:59:12.619Z] INFO  [MetadataManager] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Manifest updated: _wiki/_index.md (wiki)
+[2026-07-31T06:59:12.619Z] INFO  [FolderStorage] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Topic-KB wiki regenerated: 2 topics under C:\Users\NAYAN\Documents\jolli\notepilot-ai\_wiki
+[2026-07-31T06:59:12.631Z] INFO  [GraphBuilder] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Building knowledge graph incrementally for C:\Users\NAYAN\Documents\jolli\notepilot-ai: 1 dirty, 0 new, 0 deleted, 1 clean
+[2026-07-31T06:59:12.632Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] LLM call: action=graph-units source=jolli-proxy
+[2026-07-31T06:59:12.632Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM call: action=graph-units url=https://jolli.ai/api/push/llm/complete
+[2026-07-31T06:59:22.370Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM response: action=graph-units latency=9738ms
+[2026-07-31T06:59:22.371Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] LLM call: action=graph-categories-delta source=jolli-proxy
+[2026-07-31T06:59:22.371Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM call: action=graph-categories-delta url=https://jolli.ai/api/push/llm/complete
+[2026-07-31T06:59:25.824Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM response: action=graph-categories-delta latency=3453ms
+[2026-07-31T06:59:25.825Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] LLM call: action=graph-edges source=jolli-proxy
+[2026-07-31T06:59:25.825Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM call: action=graph-edges url=https://jolli.ai/api/push/llm/complete
+[2026-07-31T06:59:42.119Z] INFO  [PrePushHook] [trace=67e6656184a190d5944232a7b037029d] pre-push hook: remote=origin budget=3000ms
+[2026-07-31T06:59:42.235Z] INFO  [PushPendingStore] [trace=67e6656184a190d5944232a7b037029d] Enqueued 1 new push-pending entries (branch=main)
+[2026-07-31T06:59:42.237Z] INFO  [PrePushHook] [trace=67e6656184a190d5944232a7b037029d] pre-push: recorded 1 commit(s) across 1 pushed ref(s)
+[2026-07-31T06:59:42.237Z] INFO  [PrePushHook] [trace=67e6656184a190d5944232a7b037029d] pre-push: starting inline sync — 2877ms of budget remaining
+[2026-07-31T06:59:42.240Z] INFO  [PushExecutor] [trace=67e6656184a190d5944232a7b037029d] processPrePushInline: 1 commit(s) in this push, 1 pending entr(ies) on disk
+[2026-07-31T06:59:42.246Z] INFO  [PushExecutor] [trace=67e6656184a190d5944232a7b037029d] processPrePushInline: claimed 1/1 candidate(s)
+[2026-07-31T06:59:42.247Z] INFO  [StorageFactory] [trace=67e6656184a190d5944232a7b037029d] StorageFactory.create: storageMode=dual-write, projectPath=C:\Projects\notepilot-ai
+[2026-07-31T06:59:42.355Z] INFO  [StorageFactory] [trace=67e6656184a190d5944232a7b037029d] Storage mode: dual-write (primary=orphan, shadow=folder)
+[2026-07-31T06:59:42.460Z] INFO  [PushExecutor] [trace=67e6656184a190d5944232a7b037029d] processPrePushInline: triage — withMemory=1 generating=0 mergedChildren=0
+[2026-07-31T06:59:42.962Z] INFO  [PushExecutor] [trace=67e6656184a190d5944232a7b037029d] processPrePushInline: pushing 1 commit(s) in one batch request
+[2026-07-31T06:59:45.259Z] INFO  [GitOps] [trace=67e6656184a190d5944232a7b037029d] Updated branch 'jollimemory/summaries/v3': 3 written, 0 deleted (via fast-import)
+[2026-07-31T06:59:45.273Z] INFO  [MetadataManager] [trace=67e6656184a190d5944232a7b037029d] Manifest updated: main/featfeatures-update-features-section-for-dark-ui-78d73089.md (commit)
+[2026-07-31T06:59:45.273Z] INFO  [FolderStorage] [trace=67e6656184a190d5944232a7b037029d] Markdown generated: main/featfeatures-update-features-section-for-dark-ui-78d73089.md
+[2026-07-31T06:59:45.277Z] INFO  [FolderStorage] [trace=67e6656184a190d5944232a7b037029d] Wrote 3 files, deleted 0 (Overwrite summary for 78d73089: feat(features): update features section for dark U)
+[2026-07-31T06:59:45.277Z] INFO  [SummaryStore] [trace=67e6656184a190d5944232a7b037029d] Summary stored successfully for commit 78d73089
+[2026-07-31T06:59:45.348Z] INFO  [PushExecutor] [trace=67e6656184a190d5944232a7b037029d] processPrePushInline: pushed=1 failed=0
+[2026-07-31T06:59:45.349Z] INFO  [PrePushHook] [trace=67e6656184a190d5944232a7b037029d] pre-push: inline sync done — pushed=1 failed=0 noMemory=0 notAttempted=0 children=0
+[2026-07-31T06:59:53.290Z] INFO  [LlmClient] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Proxy LLM response: action=graph-edges latency=27464ms
+[2026-07-31T06:59:53.297Z] INFO  [GraphBuilder] [trace=77bc6aa82380ea7f9c3e0ffd86beb238] Knowledge graph built (incremental): 1 categories, 2 topics, 11 units, 6 edges in 40668ms -> C:\Users\NAYAN\Documents\jolli\notepilot-ai\.jolli\graph\graph.json
+[2026-07-31T08:13:31.801Z] INFO  [deactivate] Jolli Memory extension deactivating

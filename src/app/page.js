@@ -10,7 +10,7 @@ import Testimonials from "@/components/home/Testimonials";
 import { Sparkles, UserCheck, ShieldCheck, Cpu } from "lucide-react";
 
 export default function Home() {
-  
+
 
   return (
     // <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-24 px-6">
