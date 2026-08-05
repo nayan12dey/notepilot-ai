@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
 export default function FAQ() {
-    // সক্রিয় অ্যাকোর্ডিয়ান ইনডেক্স ট্র্যাক করার জন্য স্টেট
+    // সক্রিয় অ্যাকোর্ডিয়ান ইনডেক্স ট্র্যাক করার জন্য স্টেট
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleFAQ = (index) => {
@@ -40,19 +40,23 @@ export default function FAQ() {
     ];
 
     return (
-        // পিওর হোয়াইট ব্যাকগ্রাউন্ড এবং স্ট্যান্ডার্ড হরিজন্টাল বর্ডার
-        <section className="w-full bg-white text-slate-900 py-20 lg:py-28 border-b border-slate-200">
-            <div className="container mx-auto px-8 md:px-16 lg:px-24 w-full">
+        // Dark Theme Section Container
+        <section className="relative w-full bg-slate-950 text-slate-100 py-20 lg:py-28 border-b border-slate-800/80 overflow-hidden">
+
+            {/* Background Ambient Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-cyan-500/5 blur-[140px] rounded-full pointer-events-none" />
+
+            <div className="container mx-auto px-8 md:px-16 lg:px-24 w-full relative z-10">
 
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto space-y-4 mb-16 md:mb-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-700 tracking-wide uppercase">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-bold text-cyan-300 tracking-wide uppercase shadow-sm shadow-cyan-500/10">
                         Support Center
                     </div>
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-slate-950">
-                        Frequently Asked <span className="text-blue-600">Questions</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-white">
+                        Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">Questions</span>
                     </h2>
-                    <p className="text-base md:text-lg text-slate-600 max-w-xl mx-auto">
+                    <p className="text-base md:text-lg text-slate-400 max-w-xl mx-auto">
                         Got questions about NotePilot AI features, data security, or operations? We have answers.
                     </p>
                 </div>
@@ -65,7 +69,9 @@ export default function FAQ() {
                         return (
                             <div
                                 key={index}
-                                className={`bg-slate-50 border-2 rounded-2xl overflow-hidden transition-all duration-300 ${isOpen ? "border-blue-600 bg-white shadow-md" : "border-slate-200 hover:border-slate-300"
+                                className={`rounded-2xl overflow-hidden backdrop-blur-xl transition-all duration-300 ${isOpen
+                                        ? "bg-slate-900/90 border-2 border-cyan-500/50 shadow-lg shadow-cyan-500/10"
+                                        : "bg-slate-900/40 border border-slate-800/80 hover:border-slate-700 hover:bg-slate-900/60"
                                     }`}
                             >
                                 {/* Accordion Header / Trigger Button */}
@@ -75,28 +81,35 @@ export default function FAQ() {
                                     aria-expanded={isOpen}
                                 >
                                     <div className="flex items-center gap-4">
-                                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${isOpen ? "bg-blue-100 text-blue-600" : "bg-white text-slate-400 border border-slate-200"
-                                            }`}>
+                                        <div
+                                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors shrink-0 ${isOpen
+                                                    ? "bg-cyan-950 border border-cyan-500/40 text-cyan-400"
+                                                    : "bg-slate-950 border border-slate-800 text-slate-400"
+                                                }`}
+                                        >
                                             <HelpCircle className="w-4 h-4" />
                                         </div>
-                                        <span className="text-base md:text-lg font-extrabold text-slate-950 tracking-tight">
+                                        <span className={`text-base md:text-lg font-extrabold tracking-tight transition-colors ${isOpen ? "text-cyan-300" : "text-slate-100"
+                                            }`}>
                                             {faq.question}
                                         </span>
                                     </div>
 
                                     {/* Smooth Rotating Arrow Icon */}
                                     <ChevronDown
-                                        className={`w-5 h-5 text-slate-500 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-blue-600" : ""
+                                        className={`w-5 h-5 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-cyan-400" : "text-slate-500"
                                             }`}
                                     />
                                 </button>
 
                                 {/* Smooth Expandable Content Panel */}
                                 <div
-                                    className={`transition-all duration-300 ease-in-out ${isOpen ? "max-h-[300px] opacity-100 border-t-2 border-slate-100" : "max-h-0 opacity-0 pointer-events-none"
+                                    className={`transition-all duration-300 ease-in-out ${isOpen
+                                            ? "max-h-[300px] opacity-100 border-t border-slate-800/80"
+                                            : "max-h-0 opacity-0 pointer-events-none"
                                         }`}
                                 >
-                                    <div className="p-6 md:p-7 bg-white text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+                                    <div className="p-6 md:p-7 bg-slate-950/40 text-sm md:text-base text-slate-300 leading-relaxed font-normal">
                                         {faq.answer}
                                     </div>
                                 </div>
