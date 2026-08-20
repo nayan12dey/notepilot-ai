@@ -18,14 +18,15 @@ export default function GoogleLoginButton({ isLoading }) {
             toast.error("Google login failed");
         }
     };
+
     return (
         <button
             type="button"
             onClick={handleGoogleLogin}
             disabled={isLoading}
-            className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-xl border border-slate-200 text-slate-700 font-bold text-sm bg-white hover:bg-slate-50 disabled:opacity-50 shadow-sm transition-all duration-300 cursor-pointer select-none active:scale-[0.99]"
+            className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3.5 rounded-xl border border-slate-800 bg-slate-950/80 text-slate-200 hover:text-white hover:bg-slate-900 hover:border-slate-700 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 disabled:opacity-50 shadow-lg shadow-slate-950/50 transition-all duration-300 cursor-pointer select-none active:scale-[0.99] font-bold text-sm"
         >
-            {/* Flat Flat Google Vector Graphic Icon */}
+            {/* Flat Google Vector Graphic Icon */}
             <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                 <path
                     fill="#4285F4"
