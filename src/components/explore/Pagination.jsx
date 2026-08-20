@@ -4,7 +4,7 @@ import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /**
- * Premium Reusable Pagination Component for NotePilot AI
+ * Premium Reusable Dark-Theme Pagination Component for NotePilot AI
  * @param {number} currentPage - বর্তমান অ্যাক্টিভ পেজ নম্বর
  * @param {number} totalPages - মোট পেজের সংখ্যা
  * @param {function} onPageChange - পেজ পরিবর্তন হ্যান্ডলার ফাংশন
@@ -19,24 +19,24 @@ export default function Pagination({
     const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
-        <div className="flex items-center justify-between border-t border-slate-100 px-4 py-6 sm:px-6 w-full select-none">
+        <div className="flex items-center justify-between border-t border-slate-800/80 px-4 py-6 sm:px-6 w-full select-none">
 
             {/* ১. মোবাইল লেআউট (শুধুমাত্র Prev এবং Next বাটন টেক্সট সহ) */}
-            <div className="flex flex-1 justify-between sm:hidden">
+            <div className="flex flex-1 justify-between sm:hidden items-center">
                 <button
                     onClick={() => currentPage > 1 && onPageChange?.(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="relative inline-flex items-center rounded-xl border-2 border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-700 hover:border-blue-600 disabled:opacity-50 disabled:hover:border-slate-200 transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed"
+                    className="relative inline-flex items-center rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-2 text-xs font-bold text-slate-300 hover:border-cyan-500/50 hover:text-white disabled:opacity-40 disabled:hover:border-slate-800 disabled:hover:text-slate-300 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed"
                 >
                     Previous
                 </button>
-                <span className="text-xs font-bold text-slate-500 self-center">
-                    Page {currentPage} of {totalPages}
+                <span className="text-xs font-bold text-slate-400">
+                    Page <span className="text-cyan-400">{currentPage}</span> of {totalPages}
                 </span>
                 <button
                     onClick={() => currentPage < totalPages && onPageChange?.(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="relative ml-3 inline-flex items-center rounded-xl border-2 border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-700 hover:border-blue-600 disabled:opacity-50 disabled:hover:border-slate-200 transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed"
+                    className="relative ml-3 inline-flex items-center rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-2 text-xs font-bold text-slate-300 hover:border-cyan-500/50 hover:text-white disabled:opacity-40 disabled:hover:border-slate-800 disabled:hover:text-slate-300 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed"
                 >
                     Next
                 </button>
@@ -45,9 +45,9 @@ export default function Pagination({
             {/* ২. ট্যাবলেট ও ডেক্সটপ লেআউট (ডিটেইলড পেজ নম্বর সহ) */}
             <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between w-full">
                 <div>
-                    <p className="text-sm font-medium text-slate-500">
-                        Showing page <span className="font-extrabold text-slate-900">{currentPage}</span> of{" "}
-                        <span className="font-extrabold text-slate-900">{totalPages}</span>
+                    <p className="text-sm font-medium text-slate-400">
+                        Showing page <span className="font-extrabold text-cyan-400">{currentPage}</span> of{" "}
+                        <span className="font-extrabold text-slate-200">{totalPages}</span>
                     </p>
                 </div>
 
@@ -58,7 +58,7 @@ export default function Pagination({
                         <button
                             onClick={() => currentPage > 1 && onPageChange?.(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className="relative inline-flex items-center rounded-xl border-2 border-slate-200 bg-white p-2.5 text-slate-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed"
+                            className="relative inline-flex items-center rounded-xl border border-slate-800 bg-slate-900/80 p-2.5 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400 hover:bg-slate-800/50 disabled:opacity-30 disabled:hover:border-slate-800 disabled:hover:text-slate-400 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed"
                         >
                             <span className="sr-only">Previous</span>
                             <ChevronLeft className="h-4 w-4" aria-hidden="true" />
@@ -72,10 +72,10 @@ export default function Pagination({
                                     key={page}
                                     onClick={() => onPageChange?.(page)}
                                     aria-current={isActive ? "page" : undefined}
-                                    className={`relative inline-flex items-center rounded-xl border-2 px-4 py-2 text-sm font-extrabold transition-all duration-200 cursor-pointer min-w-[40px] justify-center
+                                    className={`relative inline-flex items-center rounded-xl border px-4 py-2 text-sm font-extrabold transition-all duration-200 cursor-pointer min-w-[40px] justify-center
                     ${isActive
-                                            ? "bg-blue-600 border-blue-600 text-white shadow-[0_8px_20px_-6px_rgba(59,130,246,0.4)]"
-                                            : "bg-white border-slate-200 text-slate-700 hover:border-blue-600 hover:text-blue-600"
+                                            ? "bg-gradient-to-r from-cyan-500 to-blue-600 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/20"
+                                            : "bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200 hover:bg-slate-800/40"
                                         }`}
                                 >
                                     {page}
@@ -87,7 +87,7 @@ export default function Pagination({
                         <button
                             onClick={() => currentPage < totalPages && onPageChange?.(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className="relative inline-flex items-center rounded-xl border-2 border-slate-200 bg-white p-2.5 text-slate-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:text-slate-500 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed"
+                            className="relative inline-flex items-center rounded-xl border border-slate-800 bg-slate-900/80 p-2.5 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400 hover:bg-slate-800/50 disabled:opacity-30 disabled:hover:border-slate-800 disabled:hover:text-slate-400 transition-all duration-200 cursor-pointer disabled:cursor-not-allowed"
                         >
                             <span className="sr-only">Next</span>
                             <ChevronRight className="h-4 w-4" aria-hidden="true" />
